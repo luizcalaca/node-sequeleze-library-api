@@ -1,0 +1,9 @@
+version: "3.1"
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: library
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306

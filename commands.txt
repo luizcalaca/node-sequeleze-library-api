@@ -1,0 +1,26 @@
+Configurações iniciais
+npm init -y
+npm install sequelize
+npm install sequelize-cli
+npm install mysql2
+Nom install express dotenv
+
+npm i express express-async-errors dotenv joi bcrypt
+npm i -D sequelize-cli nodemon eslint-config-trybe-backend
+
+Init
+npx sequelize-cli init
+
+Alterar o config.json e rodar para a criação do banco
+npx sequelize db:create
+
+____________________________
+Create databse
+npx sequelize db:create
+
+Create models and migrations
+npx sequelize model:generate --name User --attributes email:string
+npx sequelize db:migrate
+
+Create seeders
+npx sequelize seed:generate --name users
