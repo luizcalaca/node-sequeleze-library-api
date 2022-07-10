@@ -3,7 +3,7 @@ const createWriterModel = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
   }, {
     underscored: true,
-    tableName: 'vets',
+    tableName: 'writers',
   });
 
   return Writer;

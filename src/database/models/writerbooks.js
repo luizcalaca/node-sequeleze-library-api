@@ -1,5 +1,5 @@
 const createAttendanceModel = (sequelize, DataTypes) => {
-  const Reserve = sequelize.define('WriterBooks', {
+  const WriterBook = sequelize.define('WriterBook', {
     bookId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -26,7 +26,7 @@ const createAttendanceModel = (sequelize, DataTypes) => {
     });
   }
 
-  return Attendance;
+  return WriterBook;
 };
 
 module.exports = createAttendanceModel;
