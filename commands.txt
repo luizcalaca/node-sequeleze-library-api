@@ -28,3 +28,4 @@ npx sequelize db:seed:all
 
 Association Concepts
 https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/  
+https://javascript.plainenglish.io/four-sequelize-associations-you-should-know-415d8d413e1e
