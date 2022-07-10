@@ -24,3 +24,7 @@ npx sequelize db:migrate
 
 Create seeders
 npx sequelize seed:generate --name users
+npx sequelize db:seed:all
+
+Association Concepts
+https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/  
