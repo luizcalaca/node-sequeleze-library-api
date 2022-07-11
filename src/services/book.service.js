@@ -1,6 +1,21 @@
 const {Book, User} = require('../database/models/index')
+const Joi = require('joi');
+
+const validateBody = (data) => {
+    const schema = Joi.object({
+    name: Joi.string().required(),
+    userId: Joi.number().required()
+  })
+
+  const { error, value } = schema.validate(data);
+
+  if (error) throw error;
+
+  return value;
+}
 
 const createBook = async ({name, userId}) => {
+    validateBody({name, userId})
     const book = await Book.create({ name, userId });
     return book;
 }

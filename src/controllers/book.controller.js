@@ -11,7 +11,7 @@ const listAllBooks = async (req, res) => {
 }
 
 const createBook = async (req, res) => {
-    const book = await booksService.create(req.body);
+    const book = await booksService.createBook(req.body);
     res.status(201).json(book);
 }
 
