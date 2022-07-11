@@ -10,4 +10,9 @@ const createUserWithBook = async (req, res) => {
     return res.status(200).json(result)
 }
 
-module.exports = {getAllUsers, createUserWithBook}
+const createUser = async (req, res) => {
+    const result = await userService.createUser(req.body)
+    return res.status(200).json(result)
+}
+
+module.exports = {getAllUsers, createUserWithBook, createUser}

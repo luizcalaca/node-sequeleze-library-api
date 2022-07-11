@@ -2,14 +2,18 @@ const {User, Book} = require('../database/models/index')
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 const sequelize = new Sequelize(config.development);
+const password = require('../helpers/passwordEncrypt')
 
 const getAllUsers = async () => {
     const result = await User.findAll()
     return result
 }
 
-const createUser = async () => {
-    const result = await User.create()
+const createUser = async ({email, passwordHash, name, phone}) => {
+    const encryptedPassword = password(passwordHash)
+    const result = await User.create(
+        {email, passwordHash: encryptedPassword, name, phone}
+    )
     return result
 }
 
@@ -39,4 +43,4 @@ const createUserComBook = async ({email, password_hash, name, phone, namebook })
     }
 }
 
-module.exports = {getAllUsers, createUserComBook}
+module.exports = {getAllUsers, createUserComBook, createUser}
