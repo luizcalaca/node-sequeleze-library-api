@@ -14,15 +14,15 @@ const createAttendanceModel = (sequelize, DataTypes) => {
     timestamps: false
   });
 
-  Attendance.associate = (models) => {
-    Attendance.belongsTo(models.Book, {
+  WriterBook.associate = (models) => {
+    WriterBook.belongsTo(models.Book, {
       foreignKey: 'bookId',
       as: 'book'
     });
 
-    Attendance.belongsTo(models.Writer, {
-      foreignKey: 'WriterId',
-      as: 'vet'
+    WriterBook.belongsTo(models.Writer, {
+      foreignKey: 'writerId',
+      as: 'writer'
     });
   }
 
