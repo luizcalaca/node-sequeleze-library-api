@@ -2,7 +2,7 @@ const {User, Book} = require('../database/models/index')
 const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 const sequelize = new Sequelize(config.development);
-const password = require('../helpers/passwordEncrypt')
+const passwordHash = require('../helpers/passwordEncrypt')
 const Joi = require('joi');
 
 const validateBody = (data) => {
@@ -25,9 +25,9 @@ const getAllUsers = async () => {
     return result
 }
 
-const createUser = async ({email, passwordHash, name, phone}) => {
-    const validatedData = validateBody({email, passwordHash, name, phone})
-    const encryptedPassword = password(passwordHash)
+const createUser = async ({email, password, confirmPassword, name, phone}) => {
+    const validatedData = validateBody({email, password, confirmPassword, name, phone})
+    const encryptedPassword = passwordHash(password)
     const result = await User.create(
         {email, passwordHash: encryptedPassword, name, phone}
     )
