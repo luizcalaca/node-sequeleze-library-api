@@ -3,13 +3,30 @@ const Sequelize = require('sequelize');
 const config = require('../database/config/config');
 const sequelize = new Sequelize(config.development);
 const password = require('../helpers/passwordEncrypt')
+const Joi = require('joi');
 
+const validateBody = (data) => {
+    const schema = Joi.object({
+    email: Joi.string().email().required(),
+    name: Joi.string().required(),
+    password: Joi.string().required(),
+    confirmPassword: Joi.string().required(),
+    phone: Joi.string().required(),
+  })
+
+  const { error, value } = schema.validate(data);
+
+  if (error) throw error;
+
+  return value;
+}
 const getAllUsers = async () => {
     const result = await User.findAll()
     return result
 }
 
 const createUser = async ({email, passwordHash, name, phone}) => {
+    const validatedData = validateBody({email, passwordHash, name, phone})
     const encryptedPassword = password(passwordHash)
     const result = await User.create(
         {email, passwordHash: encryptedPassword, name, phone}
