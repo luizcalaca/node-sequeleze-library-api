@@ -12,11 +12,8 @@ app.use(cors());
 
 app.use('/signin', authRouter);
 app.use('/users', usersRouter);
-
 app.use(authController.validateToken);
-
 app.use('/books', booksRouter);
-
 app.use(errorHandler)
 
 module.exports = app;

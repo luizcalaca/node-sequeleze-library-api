@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
+    "test": "mocha ./tests/**/*$NAME*.test.js --timeout 300000 --exit",
     "debug": "nodemon --watch src -r dotenv/config src"
   },
   "keywords": [],
@@ -21,5 +22,12 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.2",
     "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
   }
 }
